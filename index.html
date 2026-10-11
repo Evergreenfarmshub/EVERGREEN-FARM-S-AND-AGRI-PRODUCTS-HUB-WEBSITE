@@ -1,0 +1,659 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Evergreen Farm's and Agri Products Hub — agricultural produce, grains, seeds and farm products.">
+  <title>Evergreen Farm's &amp; Agri Products Hub</title>
+
+  <style>
+    :root {
+      --green: #174d2a;
+      --green-light: #2f7d3e;
+      --lime: #d8ec9b;
+      --cream: #fbf8ef;
+      --text: #203026;
+      --muted: #647166;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .topbar {
+      background: var(--green);
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 6%;
+      background: var(--cream);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px #173d2410;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--green);
+      font-weight: bold;
+      font-size: 18px;
+      line-height: 1.2;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--lime);
+      font-size: 27px;
+    }
+
+    .brand small {
+      display: block;
+      color: var(--green-light);
+      font-size: 11px;
+      letter-spacing: 1px;
+      margin-top: 5px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      align-items: center;
+    }
+
+    nav a {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: var(--green-light);
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--green-light);
+      color: white;
+      padding: 13px 22px;
+      border-radius: 7px;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--green);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 12px 21px;
+      border: 2px solid var(--green);
+      border-radius: 7px;
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .hero {
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 35px;
+      padding: 70px 7%;
+      background: linear-gradient(120deg, #f8f5e9, #edf4d9);
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--green-light);
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: clamp(38px, 5vw, 70px);
+      line-height: 1.05;
+      color: var(--green);
+      margin: 16px 0 22px;
+    }
+
+    .hero p {
+      max-width: 560px;
+      color: #526254;
+      font-size: 17px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .hero-art {
+      min-height: 390px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 25px;
+      background: linear-gradient(145deg, #c9e39a, #6da65b 65%, #2c6a3c);
+    }
+
+    .sun {
+      position: absolute;
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: #f5d77b;
+      top: 35px;
+      right: 50px;
+    }
+
+    .field {
+      position: absolute;
+      bottom: -10px;
+      width: 120%;
+      height: 58%;
+      border-radius: 50% 50% 0 0;
+      background: repeating-linear-gradient(
+        168deg,
+        #2c6c39 0 16px,
+        #4f8a45 17px 34px
+      );
+      transform: rotate(-4deg);
+    }
+
+    .field.two {
+      bottom: -75px;
+      background: repeating-linear-gradient(
+        168deg,
+        #194d2d 0 18px,
+        #367342 19px 37px
+      );
+      transform: rotate(5deg);
+    }
+
+    .produce {
+      position: relative;
+      z-index: 2;
+      font-size: clamp(70px, 11vw, 140px);
+      margin-top: -45px;
+    }
+
+    .art-label {
+      position: absolute;
+      z-index: 3;
+      bottom: 25px;
+      left: 25px;
+      color: white;
+      font-weight: bold;
+      font-size: 17px;
+    }
+
+    section {
+      padding: 75px 7%;
+    }
+
+    .section-head {
+      max-width: 700px;
+      margin: 0 auto 38px;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: clamp(30px, 3.5vw, 45px);
+      color: var(--green);
+      margin: 10px 0 14px;
+      line-height: 1.2;
+    }
+
+    .section-head p {
+      color: var(--muted);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .product {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e7ebdf;
+      box-shadow: 0 8px 24px #1e44200a;
+    }
+
+    .product-visual {
+      min-height: 180px;
+      display: grid;
+      place-items: center;
+      font-size: 75px;
+      background: linear-gradient(135deg, #e6efcb, #f6f2df);
+    }
+
+    .product:nth-child(2) .product-visual {
+      background: linear-gradient(135deg, #f2dfae, #fbf3dc);
+    }
+
+    .product:nth-child(3) .product-visual {
+      background: linear-gradient(135deg, #d7e8cf, #edf2d8);
+    }
+
+    .product-content {
+      padding: 22px;
+    }
+
+    .product h3 {
+      color: var(--green);
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+
+    .product p {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .about {
+      background: white;
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 55px;
+      align-items: center;
+    }
+
+    .about-art {
+      min-height: 330px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(140deg, #d7e9b6, #7eae68);
+      font-size: 120px;
+    }
+
+    .about-copy p {
+      color: var(--muted);
+      margin: 14px 0;
+    }
+
+    .checks {
+      list-style: none;
+      margin: 22px 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .checks li::before {
+      content: "✓";
+      color: var(--green-light);
+      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .values {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .value {
+      padding: 24px;
+      border-radius: 12px;
+      background: #f3f6e9;
+    }
+
+    .value strong {
+      color: var(--green);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .value span {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .contact {
+      background: var(--green);
+      color: white;
+      text-align: center;
+    }
+
+    .contact h2 {
+      color: white;
+    }
+
+    .contact p {
+      color: #d9e6d9;
+      max-width: 650px;
+      margin: 0 auto 25px;
+    }
+
+    .contact .btn {
+      background: var(--lime);
+      color: var(--green);
+    }
+
+    .contact-email {
+      display: block;
+      margin: 18px auto 0;
+      color: #f2f6d9;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      background: #10371e;
+      color: #d7e4d7;
+      padding: 25px 7%;
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: white;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav {
+        gap: 14px 18px;
+      }
+
+      .hero,
+      .about {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 50px;
+      }
+
+      .hero-art {
+        min-height: 310px;
+      }
+
+      .products,
+      .values {
+        grid-template-columns: 1fr;
+      }
+
+      .product-visual {
+        min-height: 145px;
+      }
+
+      section {
+        padding: 55px 6%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    Growing quality. Connecting harvests. Supporting better food choices.
+  </div>
+
+  <header>
+    <a class="brand" href="#home">
+      <span class="logo">🌱</span>
+      <span>
+        EVERGREEN FARM'S
+        <small>&amp; AGRI PRODUCTS HUB</small>
+      </span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#products">Our Products</a>
+      <a href="#about">About Us</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HOME SECTION -->
+    <section class="hero" id="home">
+      <div>
+        <div class="eyebrow">Rooted in quality</div>
+
+        <h1>Fresh from the farm. Ready for your table.</h1>
+
+        <p>
+          Welcome to Evergreen Farm's and Agri Products Hub —
+          your hub for agricultural produce and farm products.
+          We believe good food begins with care, quality, and
+          a strong connection to agriculture.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#products">Explore Our Products</a>
+          <a class="btn-outline" href="#contact">Get in Touch</a>
+        </div>
+      </div>
+
+      <div class="hero-art" role="img" aria-label="Farm produce illustration">
+        <div class="sun"></div>
+        <div class="field"></div>
+        <div class="field two"></div>
+        <div class="produce">🌾 🥬</div>
+        <div class="art-label">Quality • Freshness • Growth</div>
+      </div>
+    </section>
+
+    <!-- PRODUCTS SECTION -->
+    <section id="products">
+      <div class="section-head">
+        <div class="eyebrow">What we offer</div>
+        <h2>A Hub for Agricultural Products</h2>
+        <p>
+          Explore our product categories. Contact us to confirm
+          current availability, quantities, and pricing.
+        </p>
+      </div>
+
+      <div class="products">
+        <article class="product">
+          <div class="product-visual">🌽</div>
+          <div class="product-content">
+            <h3>Grains &amp; Staples</h3>
+            <p>
+              Agricultural staples for households, retailers,
+              food businesses, and other buyers.
+            </p>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-visual">🥬</div>
+          <div class="product-content">
+            <h3>Fresh Farm Produce</h3>
+            <p>
+              Seasonal produce sourced with attention to
+              freshness, handling, and quality.
+            </p>
+          </div>
+        </article>
+
+        <article class="product">
+          <div class="product-visual">🌱</div>
+          <div class="product-content">
+            <h3>Seeds &amp; Agri Supplies</h3>
+            <p>
+              Agricultural essentials to support growers and
+              people working across the food chain.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+      <div class="about-art" aria-label="Green farm illustration">
+        🌿
+      </div>
+
+      <div class="about-copy">
+        <div class="eyebrow">About Evergreen</div>
+        <h2>Committed to Agriculture and Better Food Access.</h2>
+
+        <p>
+          Evergreen Farm's and Agri Products Hub is built around
+          a simple idea: make agricultural products easier to
+          access while keeping quality and customer service at
+          the heart of every interaction.
+        </p>
+
+        <p>
+          Whether you are buying for your home, shop, business,
+          or farm, we welcome your enquiry and will help you
+          discuss the products that suit your needs.
+        </p>
+
+        <ul class="checks">
+          <li>Customer-focused service</li>
+          <li>Careful attention to product quality</li>
+          <li>Enquiries for personal and business purchases</li>
+        </ul>
+
+        <a class="btn" href="#contact">Contact Our Team</a>
+      </div>
+    </section>
+
+    <!-- OUR VALUES -->
+    <section>
+      <div class="section-head">
+        <div class="eyebrow">Our promise</div>
+        <h2>Good Products. Honest Service.</h2>
+        <p>
+          We aim to build lasting relationships with customers,
+          suppliers, and agricultural communities.
+        </p>
+      </div>
+
+      <div class="values">
+        <div class="value">
+          <strong>Quality First</strong>
+          <span>
+            We aim to help customers find products that meet
+            their requirements.
+          </span>
+        </div>
+
+        <div class="value">
+          <strong>Reliable Communication</strong>
+          <span>
+            Reach out to discuss availability, bulk orders,
+            and product details.
+          </span>
+        </div>
+
+        <div class="value">
+          <strong>Growing Together</strong>
+          <span>
+            We value relationships that support agriculture
+            and food supply.
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+      <div class="eyebrow" style="color: var(--lime);">
+        Let's talk
+      </div>
+
+      <h2>Looking for Agricultural Products?</h2>
+
+      <p>
+        Send us an email to ask about products, current
+        availability, quantities, pricing, or business enquiries.
+        We look forward to hearing from you.
+      </p>
+
+      <a
+        class="btn"
+        href="mailto:Evergreenhubandagriproducthb@gmail.com?subject=Product%20Enquiry"
+      >
+        Email Evergreen Hub
+      </a>
+
+      <a
+        class="contact-email"
+        href="mailto:Evergreenhubandagriproducthb@gmail.com"
+      >
+        Evergreenhubandagriproducthb@gmail.com
+      </a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>
+      &copy; <span id="year">2026</span>
+      Evergreen Farm's &amp; Agri Products Hub.
+      All rights reserved.
+    </span>
+
+    <a href="mailto:Evergreenhubandagriproducthb@gmail.com">
+      Contact us by email
+    </a>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
